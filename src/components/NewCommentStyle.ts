@@ -12,6 +12,22 @@ export const NewCommentContainer = styled.div`
   padding-inline: 1rem;
   width: min(100%, 45.625rem);
 
+  @media (min-width: 37rem) {
+    grid-template-columns: max-content auto max-content;
+    align-items: flex-start;
+  }
+
+  img {
+    height: 2rem;
+    width: 2rem;
+    grid-row: 3;
+
+    @media (min-width: 37rem) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+
   textarea {
     border: 1px solid var(--gray-400);
     border-radius: 6px;
@@ -22,11 +38,11 @@ export const NewCommentContainer = styled.div`
     min-height: 6rem;
     width: 100%;
     resize: none;
-  }
 
-  img {
-    height: 2rem;
-    width: 2rem;
+    @media (min-width: 37rem) {
+      grid-column: 2;
+      grid-row: 1;
+    }
   }
 
   button {
@@ -40,5 +56,10 @@ export const NewCommentContainer = styled.div`
     padding-inline: 1.5rem;
     max-width: 6.5rem;
     text-transform: uppercase;
+
+    @media (min-width: 37rem) {
+      grid-column: 3;
+      grid-row: 1;
+    }
   }
 `;
