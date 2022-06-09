@@ -11,11 +11,20 @@ export const CommentContainer = styled.article`
   padding-inline: 1rem;
   width: min(100%, 45.625rem);
 
+  @media (min-width: 37rem) {
+    row-gap: 1rem;
+    grid-template-columns: repeat(5, auto);
+  }
+
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     grid-column: span 2;
+
+    @media (min-width: 37rem) {
+      grid-column: 2;
+    }
 
     & .authorContainer {
       align-items: center;
@@ -39,6 +48,10 @@ export const CommentContainer = styled.article`
   p {
     color: var(--gray-400);
     grid-column: span 2;
+
+    @media (min-width: 37rem) {
+      grid-column: 2/5;
+    }
   }
 
   & .commentUpvotes {
@@ -52,6 +65,13 @@ export const CommentContainer = styled.article`
     padding-block: 0.75rem;
     padding-inline: 0.75rem;
     width: fit-content;
+
+    @media (min-width: 37rem) {
+      grid-column: 1;
+      grid-row: 1/3;
+      flex-direction: column;
+      height: fit-content;
+    }
 
     button {
       border: none;
@@ -84,6 +104,11 @@ export const CommentContainer = styled.article`
     font-weight: var(--fw-medium);
     font-size: 1rem;
     justify-self: end;
+
+    @media (min-width: 37rem) {
+      grid-column: 4/6;
+      grid-row: 1;
+    }
 
     &:before {
       content: "";

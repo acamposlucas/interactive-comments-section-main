@@ -36,4 +36,8 @@ export const GlobalStyle = createGlobalStyle`
   body, textarea, input, button {
     font-family: 'Rubik', sans-serif;
   }
+
+  button {
+    cursor: pointer;
+  }
 `;
