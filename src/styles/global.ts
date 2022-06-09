@@ -28,6 +28,11 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
   }
 
+  body {
+    background-color: var(--gray-100);
+    padding: 2rem 1rem;
+  }
+
   body, textarea, input, button {
     font-family: 'Rubik', sans-serif;
   }

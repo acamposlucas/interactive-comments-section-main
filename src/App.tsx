@@ -1,10 +1,11 @@
 import { GlobalStyle } from "./styles/global";
+import { Comment } from "./components/Comment";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <h1>Hello, World!</h1>
+      <Comment />
     </>
   );
 }
