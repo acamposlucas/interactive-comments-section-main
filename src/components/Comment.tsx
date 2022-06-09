@@ -1,7 +1,18 @@
 import { CommentContainer } from "./CommentStyle";
 import AvatarAmyRobson from "../assets/images/avatars/image-amyrobson.png";
+import { useState } from "react";
 
 export function Comment() {
+  const [upvote, setUpvote] = useState(0);
+
+  function handleUpvote() {
+    setUpvote((prevState) => prevState + 1);
+  }
+
+  function handleDownvote() {
+    setUpvote((prevState) => prevState - 1);
+  }
+
   return (
     <CommentContainer>
       <header>
@@ -17,9 +28,9 @@ export function Comment() {
         responsiveness at various breakpoints works really well.
       </p>
       <div className="commentUpvotes">
-        <button title="Upvote"></button>
-        <span>12</span>
-        <button title="Downvote"></button>
+        <button title="Upvote" onClick={handleUpvote}></button>
+        <span>{upvote}</span>
+        <button title="Downvote" onClick={handleDownvote}></button>
       </div>
       <button className="replyButton">Reply</button>
     </CommentContainer>
