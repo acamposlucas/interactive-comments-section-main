@@ -3,9 +3,10 @@ import styled from "styled-components";
 export const CommentContainer = styled.article`
   background-color: var(--white);
   border-radius: 8px;
-  /* display: grid;
+  display: grid;
   gap: 1.5rem;
-  grid-template-rows: repeat(3, auto); */
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: repeat(2, auto);
   padding-block: 1rem;
   padding-inline: 1rem;
   width: min(100%, 45.625rem);
@@ -14,6 +15,7 @@ export const CommentContainer = styled.article`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    grid-column: span 2;
 
     & .authorContainer {
       align-items: center;
@@ -36,6 +38,7 @@ export const CommentContainer = styled.article`
 
   p {
     color: var(--gray-400);
+    grid-column: span 2;
   }
 
   & .commentUpvotes {
@@ -80,6 +83,7 @@ export const CommentContainer = styled.article`
     gap: 0.625rem;
     font-weight: var(--fw-medium);
     font-size: 1rem;
+    justify-self: end;
 
     &:before {
       content: "";
