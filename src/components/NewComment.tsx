@@ -1,7 +1,11 @@
 import { NewCommentContainer } from "./NewCommentStyle";
 import AvatarJuliusOmo from "../assets/images/avatars/image-juliusomo.png";
 
-export function NewComment() {
+interface NewCommentProps {
+  type: "Reply" | "Update" | "Send";
+}
+
+export function NewComment({ type }: NewCommentProps) {
   return (
     <NewCommentContainer>
       <img src={AvatarJuliusOmo} alt="Julius Omo" />
@@ -11,7 +15,7 @@ export function NewComment() {
         id="newComment"
         placeholder="Add a comment..."
       ></textarea>
-      <button>Send</button>
+      <button>{type}</button>
     </NewCommentContainer>
   );
 }

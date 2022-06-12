@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -40,4 +40,9 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+`;
+
+export const CommentSection = styled.section`
+  display: grid;
+  gap: 1rem;
 `;
