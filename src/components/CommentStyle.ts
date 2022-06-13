@@ -122,3 +122,10 @@ export const CommentContainer = styled.article`
     }
   }
 `;
+
+export const ReplyContainer = styled.section`
+  display: grid;
+  gap: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--gray-300);
+`;

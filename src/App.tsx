@@ -3,7 +3,6 @@ import { Comment } from "./components/Comment";
 import { NewComment } from "./components/NewComment";
 import data from "./data.json";
 
-//TODO: import currentUser data and pass it to NewComment component
 const comments = data.comments;
 
 function App() {
@@ -20,6 +19,7 @@ function App() {
               score={comment.score}
               image={comment.user.image.png}
               username={comment.user.username}
+              replies={comment.replies}
             />
           );
         })}

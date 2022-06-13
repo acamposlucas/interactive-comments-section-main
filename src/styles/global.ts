@@ -45,4 +45,5 @@ export const GlobalStyle = createGlobalStyle`
 export const CommentSection = styled.section`
   display: grid;
   gap: 1rem;
+  max-width: 45.625rem;
 `;
