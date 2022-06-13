@@ -49,6 +49,11 @@ export const CommentContainer = styled.article`
     color: var(--gray-400);
     grid-column: span 2;
 
+    a .reply {
+      cursor: pointer;
+      color: initial;
+    }
+
     @media (min-width: 37rem) {
       grid-column: 2/5;
     }
@@ -123,7 +128,7 @@ export const CommentContainer = styled.article`
   }
 `;
 
-export const ReplyContainer = styled.section`
+export const ReplySectionContainer = styled.section`
   display: grid;
   gap: 1rem;
   padding-left: 1rem;

@@ -40,6 +40,15 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  a {
+    text-decoration: none;
+    font-weight: var(--fw-bold);
+
+    &:visited {
+      color: var(--blue-500);
+    }
+  }
 `;
 
 export const CommentSection = styled.section`

@@ -1,7 +1,9 @@
-import { CommentContainer, ReplyContainer } from "./CommentStyle";
+import { CommentContainer, ReplySectionContainer } from "./CommentStyle";
 import { useState } from "react";
+import { ReplyComment } from "./ReplyComment";
 
-type ReplyProps = {
+// FIXME: reply key from object is not working properly.
+interface ReplyProps {
   id?: number;
   content?: string;
   createdAt?: string;
@@ -13,7 +15,7 @@ type ReplyProps = {
     };
   };
   username?: string;
-};
+}
 interface CommentProps extends ReplyProps {
   content: string;
   createdAt: string;
@@ -60,28 +62,11 @@ export function Comment({
         <button className="replyButton">Reply</button>
       </CommentContainer>
       {replies.length > 0 ? (
-        <ReplyContainer>
+        <ReplySectionContainer>
           {replies.map((reply) => {
-            return (
-              <CommentContainer>
-                <header>
-                  <div className="authorContainer">
-                    <img src={`${reply.user?.image}`} alt={reply.username} />
-                    <h2>{reply.username}</h2>
-                    <span>{reply.createdAt}</span>
-                  </div>
-                </header>
-                <p>{reply.content}</p>
-                <div className="commentUpvotes">
-                  <button title="Upvote" onClick={handleUpvote}></button>
-                  <span>{reply.score}</span>
-                  <button title="Downvote" onClick={handleDownvote}></button>
-                </div>
-                <button className="replyButton">Reply</button>
-              </CommentContainer>
-            );
+            return <ReplyComment />;
           })}
-        </ReplyContainer>
+        </ReplySectionContainer>
       ) : null}
     </>
   );
