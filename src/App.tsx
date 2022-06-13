@@ -1,10 +1,10 @@
 import { CommentSection, GlobalStyle } from "./styles/global";
 import { Comment } from "./components/Comment";
 import { NewComment } from "./components/NewComment";
-import data from "../data.json";
+import data from "./data.json";
 
+//TODO: import currentUser data and pass it to NewComment component
 const comments = data.comments;
-console.log(comments);
 
 function App() {
   return (

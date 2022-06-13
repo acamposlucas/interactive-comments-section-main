@@ -1,6 +1,8 @@
 import { NewCommentContainer } from "./NewCommentStyle";
 import AvatarJuliusOmo from "../assets/images/avatars/image-juliusomo.png";
+import data from "../data.json";
 
+const currentUser = data.currentUser;
 interface NewCommentProps {
   type: "Reply" | "Update" | "Send";
 }
@@ -8,7 +10,7 @@ interface NewCommentProps {
 export function NewComment({ type }: NewCommentProps) {
   return (
     <NewCommentContainer>
-      <img src={AvatarJuliusOmo} alt="Julius Omo" />
+      <img src={currentUser.image.png} alt={currentUser.username} />
       <label htmlFor="newComment"></label>
       <textarea
         name="newComment"
