@@ -1,8 +1,39 @@
 import { useState } from "react";
 import { ReplyCommentContainer } from "./ReplyCommentStyle";
 
-export function ReplyComment() {
-  const [upvote, setUpvote] = useState<number>(0);
+interface CurrentUser {
+  currentUser: {
+    image: {
+      png: string;
+      webp: string;
+    };
+    username: string;
+  };
+}
+interface ReplyProps extends CurrentUser {
+  id: number;
+  content: string;
+  createdAt: string;
+  score: number;
+  replyingTo: string;
+  user: {
+    image: {
+      png: string;
+      webp: string;
+    };
+    username: string;
+  };
+}
+
+export function ReplyComment({
+  currentUser,
+  content,
+  createdAt,
+  score,
+  replyingTo,
+  user,
+}: ReplyProps) {
+  const [upvote, setUpvote] = useState<number>(score);
 
   function handleUpvote() {
     setUpvote((prevState) => prevState + 1);
@@ -15,25 +46,22 @@ export function ReplyComment() {
     <ReplyCommentContainer>
       <header>
         <div className="authorContainer">
-          <img src="https://github.com/acamposlucas.png" alt="" />
-          <h2>lucas</h2>
-          <span>1 month ago</span>
+          <img src={user.image.png} alt={user.username} />
+          <h2>{user.username}</h2>
+          <span>{createdAt}</span>
         </div>
       </header>
       <p>
         {" "}
-        <span className="repliedTo">@repliedTo </span>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis cum iusto
-        corrupti porro vero. Dolores vitae necessitatibus possimus, quisquam sit
-        similique corrupti voluptatem autem numquam explicabo vero fugiat
-        placeat repellendus.
+        <span className="repliedTo">@{replyingTo} </span>
+        {content}
       </p>
       <div className="commentUpvotes">
         <button title="Upvote" onClick={handleUpvote}></button>
         <span>{upvote}</span>
         <button title="Downvote" onClick={handleDownvote}></button>
       </div>
-      {true ? (
+      {currentUser.username === user.username ? (
         <div className="userOptions">
           <button className="deleteButton">Delete</button>
           <button className="editButton">Edit</button>

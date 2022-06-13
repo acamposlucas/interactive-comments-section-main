@@ -2,38 +2,47 @@ import { CommentContainer, ReplySectionContainer } from "./CommentStyle";
 import { useState } from "react";
 import { ReplyComment } from "./ReplyComment";
 
-// FIXME: reply key from object is not working properly.
-interface ReplyProps {
-  id?: number;
-  content?: string;
-  createdAt?: string;
-  score?: number;
-  replyingTo?: string;
-  user?: {
-    image: {
-      png: string;
-    };
-  };
-  username?: string;
-}
-interface CommentProps extends ReplyProps {
+interface Reply {
+  id: number;
   content: string;
   createdAt: string;
   score: number;
-  image: string;
-  username: string;
-  replies: ReplyProps[];
+  replyingTo: string;
+  user: {
+    image: {
+      png: string;
+      webp: string;
+    };
+    username: string;
+  };
+}
+interface CommentProps {
+  comment: {
+    id: number;
+    content: string;
+    createdAt: string;
+    score: number;
+    user: {
+      image: {
+        png: string;
+        webp: string;
+      };
+      username: string;
+    };
+    replies: Reply[];
+  };
+
+  currentUser: {
+    image: {
+      png: string;
+      webp: string;
+    };
+    username: string;
+  };
 }
 
-export function Comment({
-  content,
-  createdAt,
-  score,
-  image,
-  username,
-  replies,
-}: CommentProps) {
-  const [upvote, setUpvote] = useState<number>(score);
+export function Comment({ comment, currentUser }: CommentProps) {
+  const [upvote, setUpvote] = useState<number>(comment.score);
 
   function handleUpvote() {
     setUpvote((prevState) => prevState + 1);
@@ -48,12 +57,15 @@ export function Comment({
       <CommentContainer>
         <header>
           <div className="authorContainer">
-            <img src={`${image}`} alt={username} />
-            <h2>{username}</h2>
-            <span>{createdAt}</span>
+            <img
+              src={`${comment.user.image.png}`}
+              alt={comment.user.username}
+            />
+            <h2>{comment.user.username}</h2>
+            <span>{comment.createdAt}</span>
           </div>
         </header>
-        <p>{content}</p>
+        <p>{comment.content}</p>
         <div className="commentUpvotes">
           <button title="Upvote" onClick={handleUpvote}></button>
           <span>{upvote}</span>
@@ -61,10 +73,20 @@ export function Comment({
         </div>
         <button className="replyButton">Reply</button>
       </CommentContainer>
-      {replies.length > 0 ? (
+      {comment.replies.length > 0 ? (
         <ReplySectionContainer>
-          {replies.map((reply) => {
-            return <ReplyComment />;
+          {comment.replies.map((reply) => {
+            return (
+              <ReplyComment
+                id={reply.id}
+                content={reply.content}
+                createdAt={reply.createdAt}
+                score={reply.score}
+                replyingTo={reply.replyingTo}
+                user={reply.user}
+                currentUser={currentUser}
+              />
+            );
           })}
         </ReplySectionContainer>
       ) : null}
